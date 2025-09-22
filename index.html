@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Assistant</title>
+</head>
+<body>
+  <h1>📜 История</h1>
+  <ul id="history"></ul>
+
+  <script>
+    async function loadHistory() {
+      const res = await fetch("https://https://stock-assistant-production.up.railway.app//history");
+      const data = await res.json();
+      const list = document.getElementById("history");
+      list.innerHTML = data
+        .map(item => `<li><b>${item.user_input}</b> → ${item.assistant_output}</li>`)
+        .join("");
+    }
+    loadHistory();
+  </script>
+</body>
+</html>
