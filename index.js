@@ -2,6 +2,12 @@ import express from "express";
 import { createClient } from "@supabase/supabase-js";
 import dotenv from "dotenv";
 dotenv.config();
+import cors from 'cors';
+
+app.use(cors()); // разрешит все источники — на этапе MVP удобно
+// или для безопасности:
+// app.use(cors({ origin: 'https://stock-assistant-five.vercel.app' }));
+
 console.log("URL:", process.env.SUPABASE_URL);
 console.log("KEY:", process.env.SUPABASE_KEY ? "Loaded" : "Missing");
 
